@@ -1,10 +1,29 @@
 import java.util.*;
+import java.math.*;
 
 /*
  *@author Vita Wiebe;
  *@version Assignment 3, Tuesday class, section H9;
  */
 public class VitaWiebeTA3 {
+
+    // Create a public recursive method, which will call its overloaded private helper method;
+    public static int getMax(int[] ourArray){
+        return getMax(ourArray, 0);
+     }
+
+    // Create a private recursive helper method with 2 params:
+    private static int getMax(int[] ourArray, int idx){
+
+        // Initialize max to the value
+       // int max = ourArray[idx];
+
+        int max = Math.max(max, ourArray[idx + 1]);
+        if(idx < ourArray.length - 1){
+            getMax(ourArray, ++idx);
+        }
+        return max;
+    }
 
 
     public static void main(String[] args) {
@@ -33,6 +52,7 @@ public class VitaWiebeTA3 {
         for (int value : userIn) {
             System.out.println(value);
         }
+        System.out.println("the max is " + getMax(userIn));
     }
 
 

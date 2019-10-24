@@ -9,7 +9,7 @@ public class VitaWiebeTA3 {
 
     // Create a public recursive method, which will call its overloaded private helper method;
     public static int getMax(int[] ourArray){
-        return getMax(ourArray, 0);
+        return getMax(ourArray, ourArray.length - 1);
      }
 
     // Create a private recursive helper method with 2 params:
@@ -17,11 +17,17 @@ public class VitaWiebeTA3 {
 
         // Initialize max to the value
         int max = ourArray[idx];
+        // Compare beginning and ending elements of array;
+        max = Math.max(max, ourArray[idx]);
 
-        max = Math.max(max, ourArray[idx + 1]);
-        if(idx < ourArray.length){
-            getMax(ourArray, idx++);
+        // Recursive case:
+        if(idx > 0){
+            getMax(ourArray, idx + 1);
+        // Base case:
+        }else if(ourArray.length == 1){
+            return max;
         }
+        // Other base case:
         return max;
     }
 

@@ -16,16 +16,17 @@ public class VitaWiebeTA3 {
     private static int getMax(int[] ourArray, int idx){
 
         // Initialize max to the value
-       // int max = ourArray[idx];
+        int max = ourArray[idx];
 
-        int max = Math.max(max, ourArray[idx + 1]);
-        if(idx < ourArray.length - 1){
-            getMax(ourArray, ++idx);
+        max = Math.max(max, ourArray[idx + 1]);
+        if(idx < ourArray.length){
+            getMax(ourArray, idx++);
         }
         return max;
     }
 
-
+    // Our application method;
+    // Obtains user input and calls pertinent methods;
     public static void main(String[] args) {
 
         // Create Scanner object to parse user input;

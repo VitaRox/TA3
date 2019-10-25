@@ -6,7 +6,7 @@ import static java.lang.Math.max;
  *@author Vita Wiebe;
  *@version Assignment 3, Tuesday class, section H9;
  */
-public class VitaWiebeTA3 {
+public class VitaWiebeTA3{
 
     // Create a public recursive method, which will call its overloaded private helper method;
     public static int getMax(int[] ourArray){
@@ -22,11 +22,12 @@ public class VitaWiebeTA3 {
     // Create a private recursive helper method with 3 params:
     private static int getMax(int[] ourArray, int idx, int max) {
 
+
         // Base case:
         if (ourArray.length == 1) {
             return max;
-        // Recursive case:
-        }else if((idx + 1) <= ourArray.length){
+            // Recursive case:
+        }else if ((idx + 1) <= ourArray.length) {
             // Compare our current newMax and the value of array at index 'idx';
             int newMax = max(max, ourArray[idx]);
             // Increment index value 'idx' in recursive call;
@@ -47,29 +48,38 @@ public class VitaWiebeTA3 {
 
         // Create counter to stop scanner from checking for input eternally;
         int count = 0;
-
+        boolean validOption = true;
         // Create an array to hold user input, 7 spaces
         int[] userIn = new int[7];
 
         // Prompt end user for input of appropriate type;
         System.out.println("Please enter 7 integers, each separated by one space: ");
-        while (count < 7){
 
-            // Assign each token (int) to a temp variable, "current";
-            int current = scan.nextInt();
+        // 'Try-catch' clause to catch bad user input and re-prompt for good input;
+        try {
+            while (count < 7 ) {
+                // Assign each token (int) to a temp variable, "current";
+                int current = scan.nextInt();
 
-            // Add the current value to our array for storage;
-            userIn[count] = current;
-            count++;
+                // Add the current value to our array for storage;
+                userIn[count] = current;
+                count++;
+            }
+            if(validOption) {
+                //   A for-each loop to remind user of their input values, and in style ;)
+                System.out.println("You entered: ");
+                for (int value : userIn) {
+                    System.out.printf("%d  ==>  ", value);
+                }
+                System.out.println("The largest element is " + getMax(userIn) + "!  That's a " +
+                        "relatively large amount.");
+            }
+        }catch (InputMismatchException ime) {
+            System.out.println("One of your values is either too big, too small, or" +
+                    " otherwise not an integer. Please try again.");
+            System.out.println("Please enter 7 integers, each separated by one space: ");
+            validOption = false;
         }
-        /*
-           A for-each loop to remind user of their input values in style ;)
-         */
-        System.out.println("You entered: ");
-        for (int value : userIn) {
-            System.out.printf("%d  ==>  ", value);
-        }
-        System.out.println("The largest element is " + getMax(userIn) + "!  That's a " +
-                "relatively large amount.");
     }
 }
+

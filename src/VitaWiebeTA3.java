@@ -20,20 +20,19 @@ public class VitaWiebeTA3 {
      }
 
     // Create a private recursive helper method with 3 params:
-    private static int getMax(int[] ourArray, int idx, int max){
+    private static int getMax(int[] ourArray, int idx, int max) {
 
-        // Compare our current newMax and the value of array at index 'idx';
-        int newMax = max(max, ourArray[idx]);
-
-        // Recursive case:
-        if((idx + 1) < ourArray.length){
-            // Increment index value 'idx';
-            return getMax(ourArray, idx + 1, newMax);
         // Base case:
-        }else if(ourArray.length == 1){
+        if (ourArray.length == 1) {
             return max;
+        // Recursive case:
+        }else if((idx + 1) <= ourArray.length){
+            // Compare our current newMax and the value of array at index 'idx';
+            int newMax = max(max, ourArray[idx]);
+            // Increment index value 'idx' in recursive call;
+            return getMax(ourArray, idx + 1, newMax);
         }
-//      // Other base case:
+        // Other base case:
         return max;
     }
 

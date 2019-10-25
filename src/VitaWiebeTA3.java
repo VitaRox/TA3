@@ -15,14 +15,19 @@ public class VitaWiebeTA3 {
     // Create a private recursive helper method with 2 params:
     private static int getMax(int[] ourArray, int idx){
 
-        // Initialize max to the value
-        int max = ourArray[idx];
-        // Compare beginning and ending elements of array;
+        // Initialize max to the first elem in array;
+        int max = ourArray[0];
+
+        /*
+         Compare beginning and ending elements of array;
+         Reassign the victor;
+        */
         max = Math.max(max, ourArray[idx]);
 
         // Recursive case:
         if(idx > 0){
-            getMax(ourArray, idx + 1);
+            // Decrement index value 'idx';
+            getMax(ourArray, idx - 1);
         // Base case:
         }else if(ourArray.length == 1){
             return max;

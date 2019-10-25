@@ -21,7 +21,7 @@ public class VitaWiebeTA3 {
         // Recursive case:
         if((idx + 1) < ourArray.length){
             // Increment index value 'idx';
-            getMax(ourArray, idx + 1, newMax);
+            return getMax(ourArray, idx + 1, newMax);
         // Base case:
         }else if(ourArray.length == 1){
             return max;
@@ -62,7 +62,4 @@ public class VitaWiebeTA3 {
         }
         System.out.println("the max is " + getMax(userIn));
     }
-
-
-
 }

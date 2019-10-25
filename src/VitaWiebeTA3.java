@@ -48,7 +48,6 @@ public class VitaWiebeTA3{
 
         // Create counter to stop scanner from checking for input eternally;
         int count = 0;
-        boolean validOption = true;
         // Create an array to hold user input, 7 spaces
         int[] userIn = new int[7];
 
@@ -56,16 +55,16 @@ public class VitaWiebeTA3{
         System.out.println("Please enter 7 integers, each separated by one space: ");
 
         // 'Try-catch' clause to catch bad user input and re-prompt for good input;
+        int current;
         try {
             while (count < 7 ) {
                 // Assign each token (int) to a temp variable, "current";
-                int current = scan.nextInt();
+                current = scan.nextInt();
 
                 // Add the current value to our array for storage;
                 userIn[count] = current;
                 count++;
             }
-            if(validOption) {
                 //   A for-each loop to remind user of their input values, and in style ;)
                 System.out.println("You entered: ");
                 for (int value : userIn) {
@@ -73,12 +72,11 @@ public class VitaWiebeTA3{
                 }
                 System.out.println("The largest element is " + getMax(userIn) + "!  That's a " +
                         "relatively large amount.");
-            }
+
         }catch (InputMismatchException ime) {
             System.out.println("One of your values is either too big, too small, or" +
                     " otherwise not an integer. Please try again.");
-            System.out.println("Please enter 7 integers, each separated by one space: ");
-            validOption = false;
+
         }
     }
 }

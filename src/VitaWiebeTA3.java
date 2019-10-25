@@ -9,35 +9,31 @@ public class VitaWiebeTA3 {
 
     // Create a public recursive method, which will call its overloaded private helper method;
     public static int getMax(int[] ourArray){
-        return getMax(ourArray, ourArray.length - 1);
+        return getMax(ourArray, 0, 0);
      }
 
     // Create a private recursive helper method with 2 params:
-    private static int getMax(int[] ourArray, int idx){
+    private static int getMax(int[] ourArray, int idx, int max){
 
-        // Initialize max to the first elem in array;
-        int max = ourArray[0];
-
-        /*
-         Compare beginning and ending elements of array;
-         Reassign the victor;
-        */
-        max = Math.max(max, ourArray[idx]);
+        // Compare our current testValue and the value of array at index 'idx';
+        int newMax = Math.max(max, ourArray[idx]);
 
         // Recursive case:
-        if(idx > 0){
-            // Decrement index value 'idx';
-            getMax(ourArray, idx - 1);
+        if((idx + 1) < ourArray.length){
+            // Increment index value 'idx';
+            getMax(ourArray, idx + 1, newMax);
         // Base case:
         }else if(ourArray.length == 1){
             return max;
         }
-        // Other base case:
+//      // Other base case:
         return max;
     }
 
-    // Our application method;
-    // Obtains user input and calls pertinent methods;
+    /*
+     Our application method;
+     Obtains user input and calls pertinent methods;
+    */
     public static void main(String[] args) {
 
         // Create Scanner object to parse user input;

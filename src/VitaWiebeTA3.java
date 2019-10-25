@@ -1,5 +1,6 @@
 import java.util.*;
-import java.math.*;
+import static java.lang.Math.max;
+
 
 /*
  *@author Vita Wiebe;
@@ -9,14 +10,20 @@ public class VitaWiebeTA3 {
 
     // Create a public recursive method, which will call its overloaded private helper method;
     public static int getMax(int[] ourArray){
-        return getMax(ourArray, 0, 0);
+
+        /*
+         Param 'max' is initialized to lowest possible int data type value;
+         this guarantees that it won't ultimately return the initializing, "dummy"
+         variable even if it isn't entered by the user;
+        */
+        return getMax(ourArray, 0, -1000000000);
      }
 
-    // Create a private recursive helper method with 2 params:
+    // Create a private recursive helper method with 3 params:
     private static int getMax(int[] ourArray, int idx, int max){
 
-        // Compare our current testValue and the value of array at index 'idx';
-        int newMax = Math.max(max, ourArray[idx]);
+        // Compare our current newMax and the value of array at index 'idx';
+        int newMax = max(max, ourArray[idx]);
 
         // Recursive case:
         if((idx + 1) < ourArray.length){
@@ -32,7 +39,7 @@ public class VitaWiebeTA3 {
 
     /*
      Our application method;
-     Obtains user input and calls pertinent methods;
+     Obtain user input and call pertinent methods;
     */
     public static void main(String[] args) {
 
@@ -56,10 +63,14 @@ public class VitaWiebeTA3 {
             userIn[count] = current;
             count++;
         }
-        // A for-each loop to test that user input is being taken and stored correctly;
+        /*
+           A for-each loop to remind user of their input values in style ;)
+         */
+        System.out.println("You entered: ");
         for (int value : userIn) {
-            System.out.println(value);
+            System.out.printf("%d  ==>  ", value);
         }
-        System.out.println("the max is " + getMax(userIn));
+        System.out.println("The largest element is " + getMax(userIn) + "!  That's a " +
+                "relatively large amount.");
     }
 }

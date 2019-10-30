@@ -50,35 +50,33 @@ public class VitaWiebeTA3{
         int count = 0;
         // Create an array to hold user input, 7 spaces
         int[] userIn = new int[7];
+        int current;
+        // Prompt end user for input of appropriate type;
+        System.out.println("Please enter 7 integers, each separated by one space: ");
+
         do {
-            // Prompt end user for input of appropriate type;
-            System.out.println("Please enter 7 integers, each separated by one space: ");
-
             // 'Try-catch' clause to catch bad user input and re-prompt for good input;
-            int current;
             try {
-
                 // Assign each token (int) to a temp variable, "current";
                 current = scan.nextInt();
 
                 // Add the current value to our array for storage;
                 userIn[count] = current;
                 count++;
-
-                //   A for-each loop to remind user of their input values, and in style ;)
-                System.out.println("You entered: ");
-                for (int value : userIn) {
-                    System.out.printf("%d  ==>  ", value);
-                }
-                System.out.println("The largest element is " + getMax(userIn) + "!  That's a " +
-                        "relatively large amount.");
-
             } catch (InputMismatchException ime) {
                 System.out.println("One of your values is either too big, too small, or" +
                         " otherwise not an integer. Please try again.");
-
             }
         } while (count < 7);
+
+        //   A for-each loop to remind user of their input values, and in style ;)
+        System.out.println("You entered: ");
+        for (int value : userIn) {
+            System.out.printf("%d  ==>  ", value);
+        }
+        // Return the largest integer found among the user's input;
+        System.out.println("The largest element is " + getMax(userIn) + "!  That's a " +
+                "relatively large amount.");
     }
 }
 
